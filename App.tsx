@@ -12,7 +12,7 @@ const App: React.FC = () => {
 
       <main className="flex-grow">
         {/* Hero / Confirmation Section */}
-        <section className="max-w-3xl mx-auto px-6 pt-8 text-center">
+        <section className="max-w-3xl mx-auto px-6 pt-8 text-center animate-entrance">
           <div className="mb-6 inline-block bg-white p-4 rounded-full shadow-soft-rose">
              <span className="text-4xl">🌸</span>
           </div>
@@ -62,15 +62,55 @@ const App: React.FC = () => {
         </div>
       </footer>
 
-      {/* Styles for soft pink shadows and background animations */}
+      {/* Modern Premium Animations 2026 */}
       <style>{`
         .shadow-soft-rose {
           box-shadow: 0 10px 25px -5px rgba(225, 175, 175, 0.2);
         }
-        @keyframes subtle-float {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-5px); }
-          100% { transform: translateY(0px); }
+
+        /* 1. Entrada (Load) */
+        @keyframes entrance {
+          0% {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-entrance {
+          animation: entrance 400ms ease-out forwards;
+        }
+
+        /* 2. Pulso de Respiração (Idle Continuous) */
+        @keyframes breathing {
+          0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 8px 20px -5px rgba(40, 167, 69, 0.3);
+          }
+          50% {
+            transform: scale(1.02);
+            box-shadow: 0 12px 25px -2px rgba(40, 167, 69, 0.45);
+          }
+        }
+        .animate-breathing-pulse {
+          animation: breathing 3s ease-in-out infinite;
+        }
+
+        /* 3. Brilho Sweep (Shine) */
+        @keyframes shine {
+          0% { transform: translateX(-100%) skewX(-15deg); }
+          100% { transform: translateX(200%) skewX(-15deg); }
+        }
+        .animate-shine {
+          animation: shine 800ms ease-out forwards;
+        }
+
+        /* 4. Brilho Automático Suave (Para mobile, sem hover) */
+        .animate-shine-auto {
+          animation: shine 4s ease-in-out infinite;
+          animation-delay: 2s;
         }
       `}</style>
     </div>
